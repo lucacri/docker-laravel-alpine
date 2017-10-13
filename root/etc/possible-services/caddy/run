@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv sh
+
+/usr/sbin/caddy -agree=true -conf=/caddy.conf

@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv sh
+
+/usr/sbin/php-fpm7 --nodaemonize --force-stderr -c /etc/php7/php-fpm.d/
