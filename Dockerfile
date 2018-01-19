@@ -1,4 +1,4 @@
-FROM lucacri/alpine-base:latest
+FROM lucacri/alpine-base:3.7.0
 
 MAINTAINER "Luca Critelli" <lucacri@gmail.com>
 
@@ -62,6 +62,7 @@ curl "https://caddyserver.com/download/linux/amd64?plugins=http.cache,http.cors,
     | tar --no-same-owner -C /usr/sbin/ -xz caddy
 
 ENV ENABLE_CRON=1 \
+ENABLE_HORIZON=0 \
 ENABLE_CADDY=1 \
 ENABLE_FPM=1 \
 ENABLE_LOGS=1 \
