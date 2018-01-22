@@ -51,6 +51,12 @@ fontconfig \
 openssh \
 bash && \
 ln -sf /usr/bin/php7 /usr/bin/php && \
+mkdir -p /usr/share && \
+cd /usr/share && \
+curl -L https://github.com/Overbryd/docker-phantomjs-alpine/releases/download/2.11/phantomjs-alpine-x86_64.tar.bz2 | tar xj && \
+ln -s /usr/share/phantomjs/phantomjs /usr/bin/phantomjs && \
+ln -s /usr/share/phantomjs/phantomjs /usr/local/bin/phantomjs && \
+phantomjs --version && \
 cd /tmp && \
 curl -L https://getcomposer.org/installer | php -- --quiet && \
 mv /tmp/composer.phar /usr/local/bin/composer && \
@@ -70,6 +76,7 @@ STARTUP_MIGRATE=1 \
 STARTUP_CONFIG_CACHE=1 \
 STARTUP_ROUTE_CACHE=1 \
 STARTUP_OPTIMIZE=1 \
-DEVELOPMENT_WEBSERVER=0
+DEVELOPMENT_WEBSERVER=0 \
+DEVELOPMENT_WEBSERVER_NO_SSL=0
 
 COPY root/ /
