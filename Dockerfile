@@ -41,6 +41,7 @@ php7-tokenizer \
 php7-xmlwriter \
 php7-simplexml \
 php7-opcache \
+php7-soap \
 nano \
 nodejs \
 caddy \
