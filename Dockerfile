@@ -42,6 +42,9 @@ php7-xmlwriter \
 php7-simplexml \
 php7-opcache \
 php7-soap \
+php7-fileinfo \
+php7-imagick \
+php7-exif \
 nano \
 nodejs \
 caddy \
@@ -81,3 +84,6 @@ DEVELOPMENT_WEBSERVER=0 \
 DEVELOPMENT_WEBSERVER_NO_SSL=0
 
 COPY root/ /
+
+EXPOSE 80
+EXPOSE 443
