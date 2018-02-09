@@ -6,9 +6,10 @@ ARG UID=501
 ARG GID=501
 
 
+
 RUN apk --no-cache add curl && \
     curl https://php.codecasts.rocks/php-alpine.rsa.pub -o /etc/apk/keys/php-alpine.rsa.pub && \
-    apk --update add ca-certificates && \
+    apk --no-cache --update add ca-certificates && \
     echo "@php https://php.codecasts.rocks/v3.7/php-7.2" >> /etc/apk/repositories && \
     apk --no-cache add \
         php7@php \
@@ -73,16 +74,16 @@ RUN apk --no-cache add curl && \
         | tar --no-same-owner -C /usr/sbin/ -xz caddy
 
 ENV ENABLE_CRON=1 \
-ENABLE_HORIZON=0 \
-ENABLE_CADDY=1 \
-ENABLE_FPM=1 \
-ENABLE_LOGS=1 \
-STARTUP_MIGRATE=1 \
-STARTUP_CONFIG_CACHE=1 \
-STARTUP_ROUTE_CACHE=1 \
-STARTUP_OPTIMIZE=1 \
-DEVELOPMENT_WEBSERVER=0 \
-DEVELOPMENT_WEBSERVER_NO_SSL=0
+    ENABLE_HORIZON=0 \
+    ENABLE_CADDY=1 \
+    ENABLE_FPM=1 \
+    ENABLE_LOGS=1 \
+    STARTUP_MIGRATE=1 \
+    STARTUP_CONFIG_CACHE=1 \
+    STARTUP_ROUTE_CACHE=1 \
+    STARTUP_OPTIMIZE=1 \
+    DEVELOPMENT_WEBSERVER=0 \
+    DEVELOPMENT_WEBSERVER_NO_SSL=0
 
 COPY root/ /
 
