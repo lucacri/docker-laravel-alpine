@@ -55,7 +55,17 @@ RUN apk --no-cache add curl && \
         curl \
         fontconfig \
         openssh \
-        bash && \
+        bash \
+        libpng-dev \
+        ffmpeg \
+        yarn \
+        imagemagick \
+        ghostscript-fonts \
+        jpegoptim \
+        optipng \
+        pngquant \
+        gifsicle \
+        rsync && \
     ln -sf /usr/bin/php7 /usr/bin/php && \
     mkdir -p /usr/share && \
     cd /usr/share && \
@@ -85,7 +95,7 @@ ENV ENABLE_CRON=1 \
     STARTUP_MIGRATE=1 \
     STARTUP_CONFIG_CACHE=1 \
     STARTUP_ROUTE_CACHE=1 \
-    STARTUP_OPTIMIZE=1 \
+    STARTUP_OPTIMIZE=0 \
     DEVELOPMENT_WEBSERVER=0 \
     DEVELOPMENT_WEBSERVER_NO_SSL=0
 
