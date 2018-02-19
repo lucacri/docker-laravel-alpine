@@ -15,4 +15,5 @@ if [ "$ENABLE_XDEBUG" -eq "1" ]; then
     echo "xdebug.remote_connect_back=0" >> /etc/php7/conf.d/00_xdebug.ini
     echo "xdebug.profiler_enable=0" >> /etc/php7/conf.d/00_xdebug.ini
     echo "xdebug.idekey=${XDEBUG_IDE_KEY}" >> /etc/php7/conf.d/00_xdebug.ini
+    echo "xdebug.extended_info=1" >> /etc/php7/conf.d/00_xdebug.ini
 fi

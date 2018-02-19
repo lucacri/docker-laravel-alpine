@@ -101,7 +101,8 @@ ENV ENABLE_CRON=1 \
     DEVELOPMENT_WEBSERVER_NO_SSL=0 \
     ENABLE_XDEBUG=0 \
     XDEBUG_IDE_KEY=PHPSTORM \
-    XDEBUG_REMOTE_HOST=docker.for.mac.localhost
+    XDEBUG_REMOTE_HOST=docker.for.mac.localhost \
+    PHP_SERVER_NAME=docker
 
 
 COPY root/ /
