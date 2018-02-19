@@ -43,6 +43,7 @@ RUN apk --no-cache add curl && \
         php7-zlib@php \
         php7-opcache@php \
         php7-soap@php \
+        php7-xdebug@php \
         php7-imagick@php \
         php7-exif@php \
         ghostscript \
@@ -97,7 +98,11 @@ ENV ENABLE_CRON=1 \
     STARTUP_ROUTE_CACHE=1 \
     STARTUP_OPTIMIZE=0 \
     DEVELOPMENT_WEBSERVER=0 \
-    DEVELOPMENT_WEBSERVER_NO_SSL=0
+    DEVELOPMENT_WEBSERVER_NO_SSL=0 \
+    ENABLE_XDEBUG=0 \
+    XDEBUG_IDE_KEY=PHPSTORM \
+    XDEBUG_REMOTE_HOST=docker.for.mac.localhost
+
 
 COPY root/ /
 
