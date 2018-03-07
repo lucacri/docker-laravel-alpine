@@ -1,6 +1,6 @@
 FROM lucacri/alpine-base:3.7.1
 
-MAINTAINER "Luca Critelli" <lucacri@gmail.com>
+LABEL maintainer="lucacri@gmail.com"
 
 ARG UID=501
 ARG GID=501
