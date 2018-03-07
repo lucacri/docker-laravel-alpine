@@ -1,17 +1,16 @@
-FROM lucacri/alpine-base:3.7.0
+FROM lucacri/alpine-base:3.7.1
 
 MAINTAINER "Luca Critelli" <lucacri@gmail.com>
 
 ARG UID=501
 ARG GID=501
 
-
-
-RUN apk --no-cache add curl && \
+RUN apk upgrade --update-cache && \
+    apk add curl ca-certificates && \
     curl https://php.codecasts.rocks/php-alpine.rsa.pub -o /etc/apk/keys/php-alpine.rsa.pub && \
-    apk --no-cache --update add ca-certificates && \
     echo "@php https://php.codecasts.rocks/v3.7/php-7.2" >> /etc/apk/repositories && \
-    apk --no-cache add \
+    apk update && \
+    apk add \
         php7@php \
         php7-phar@php \
         php7-json@php \
@@ -86,7 +85,8 @@ RUN apk --no-cache add curl && \
     mkdir /var/www-upload && \
     chmod 777 /var/www-upload && \
     mkdir -p /tmp/tmp && \
-    touch /tmp/tmp.tmp
+    touch /tmp/tmp.tmp && \
+    rm -rf /var/cache/apk/*
 
 ENV ENABLE_CRON=1 \
     ENABLE_HORIZON=0 \
