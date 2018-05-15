@@ -21,7 +21,8 @@ if [ "$ENABLE_LOGS" -eq "1" ]; then
 fi
 
 if [ "$ENABLE_HORIZON" -eq "1" ]; then
-   echo "Enabling Laravel Horizon";
+   echo "Enabling Logs";
    cp -Rv /etc/possible-services/horizon /etc/services.d/
 fi
+
 

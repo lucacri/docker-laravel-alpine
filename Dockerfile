@@ -80,7 +80,7 @@ RUN apk upgrade --update-cache && \
     deluser caddy && \
     addgroup -g ${GID} caddy && \
     adduser -u ${UID} -h /var/www -H -G caddy -s /sbin/nologin -D caddy && \
-    curl "https://caddyserver.com/download/linux/amd64?plugins=http.cache,http.cors,http.expires,http.forwardproxy,http.ipfilter,http.realip,http.upload&license=" \
+    curl "https://caddyserver.com/download/linux/amd64?plugins=http.cache,http.cors,http.expires,http.forwardproxy,http.ipfilter,http.realip,http.upload&license=personal&telemetry=off" \
         | tar --no-same-owner -C /usr/sbin/ -xz caddy && \
     mkdir /var/www-upload && \
     chmod 777 /var/www-upload && \
