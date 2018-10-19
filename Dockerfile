@@ -1,4 +1,4 @@
-FROM lucacri/alpine-base:3.7.1
+FROM lucacri/alpine-base:3.8.2
 
 LABEL maintainer="lucacri@gmail.com"
 
@@ -7,44 +7,45 @@ ARG GID=501
 
 RUN apk upgrade --update-cache && \
     apk add curl ca-certificates && \
-    curl https://php.codecasts.rocks/php-alpine.rsa.pub -o /etc/apk/keys/php-alpine.rsa.pub && \
-    echo "@php https://php.codecasts.rocks/v3.7/php-7.2" >> /etc/apk/repositories && \
+    echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+    echo "@edge http://nl.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+    echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
     apk update && \
     apk add \
-        php7@php \
-        php7-phar@php \
-        php7-json@php \
-        php7-openssl@php \
-        php7-dom@php \
-        php7-mysqlnd@php \
-        php7-mysqli@php \
-        php7-posix@php \
-        php7-pcntl@php \
-        php7-pdo@php \
-        php7-pdo_pgsql@php \
-        php7-pdo_sqlite@php \
-        php7-pdo_mysql@php \
-        php7-common@php \
-        php7-fpm@php \
-        php7-bcmath@php \
-        php7-zip@php \
-        php7-bz2@php \
-        php7-curl@php \
-        php7-gd@php \
-        php7-intl@php \
-        php7-sqlite3@php \
-        php7-ctype@php \
-        php7-tidy@php \
-        php7-pgsql@php \
-        php7-xml@php \
-        php7-mbstring@php \
-        php7-session@php \
-        php7-zlib@php \
-        php7-opcache@php \
-        php7-soap@php \
-        php7-xdebug@php \
-        php7-imagick@php \
-        php7-exif@php \
+        php7 \
+        php7-phar \
+        php7-json \
+        php7-openssl \
+        php7-dom \
+        php7-mysqlnd \
+        php7-mysqli \
+        php7-posix \
+        php7-pcntl \
+        php7-pdo \
+        php7-pdo_pgsql \
+        php7-pdo_sqlite \
+        php7-pdo_mysql \
+        php7-common \
+        php7-fpm \
+        php7-bcmath \
+        php7-zip \
+        php7-bz2 \
+        php7-curl \
+        php7-gd \
+        php7-intl \
+        php7-sqlite3 \
+        php7-ctype \
+        php7-tidy \
+        php7-pgsql \
+        php7-xml \
+        php7-mbstring \
+        php7-session \
+        php7-zlib \
+        php7-opcache \
+        php7-soap \
+        php7-xdebug \
+        php7-imagick \
+        php7-exif \
         ghostscript \
         ghostscript-dev \
         nano \
