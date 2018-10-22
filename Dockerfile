@@ -45,6 +45,8 @@ RUN apk upgrade --update-cache && \
         php7-soap \
         php7-xdebug \
         php7-imagick \
+        php7-simplexml \
+        php7-tokenizer \
         php7-exif \
         ghostscript \
         ghostscript-dev \
