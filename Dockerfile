@@ -45,9 +45,13 @@ RUN apk upgrade --update-cache && \
         php7-soap \
         php7-xdebug \
         php7-imagick \
-        php7-simplexml \
-        php7-tokenizer \
         php7-exif \
+        php7-tokenizer \
+        php7-xmlwriter \
+        php7-fileinfo \
+        php7-simplexml \
+        php7-xmlreader \
+        php7-iconv \
         ghostscript \
         ghostscript-dev \
         nano \
