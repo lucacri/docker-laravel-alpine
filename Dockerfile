@@ -56,6 +56,7 @@ RUN apk upgrade --update-cache && \
         ghostscript-dev \
         nano \
         nodejs \
+        npm \
         caddy \
         bzip2 \
         git \
@@ -72,6 +73,8 @@ RUN apk upgrade --update-cache && \
         optipng \
         pngquant \
         gifsicle \
+        shadow \
+        composer@community \
         rsync && \
     ln -sf /usr/bin/php7 /usr/bin/php && \
     mkdir -p /usr/share && \
