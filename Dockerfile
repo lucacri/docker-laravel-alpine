@@ -1,9 +1,13 @@
-FROM lucacri/alpine-base:3.8.3
+FROM lucacri/alpine-base:3.9
 
 LABEL maintainer="lucacri@gmail.com"
 
+ARG CACHEBUST=20190411
+
 ARG UID=501
 ARG GID=501
+
+ARG INSTALL_PHANTOMJS=1
 
 RUN apk upgrade --update-cache && \
     apk add curl ca-certificates && \
@@ -75,23 +79,21 @@ RUN apk upgrade --update-cache && \
         gifsicle \
         shadow \
         composer@community \
+        caddy \
         rsync && \
     ln -sf /usr/bin/php7 /usr/bin/php && \
     mkdir -p /usr/share && \
     cd /usr/share && \
+    if [ "$INSTALL_PHANTOMJS" = "0" ] ; then \
+    echo "Skipping install of PhantomJs" ; else \ 
     curl -L https://github.com/Overbryd/docker-phantomjs-alpine/releases/download/2.11/phantomjs-alpine-x86_64.tar.bz2 | tar xj && \
     ln -s /usr/share/phantomjs/phantomjs /usr/bin/phantomjs && \
     ln -s /usr/share/phantomjs/phantomjs /usr/local/bin/phantomjs && \
-    phantomjs --version && \
+    phantomjs --version ; fi && \
     cd /tmp && \
-    curl -L https://getcomposer.org/installer | php -- --quiet && \
-    mv /tmp/composer.phar /usr/local/bin/composer && \
-    chmod 777 /usr/local/bin/composer && \
-    deluser caddy && \
-    addgroup -g ${GID} caddy && \
-    adduser -u ${UID} -h /var/www -H -G caddy -s /sbin/nologin -D caddy && \
-    curl "https://caddyserver.com/download/linux/amd64?plugins=http.cache,http.cors,http.expires,http.forwardproxy,http.ipfilter,http.realip,http.upload&license=personal&telemetry=off" \
-        | tar --no-same-owner -C /usr/sbin/ -xz caddy && \
+    composer selfupdate && \
+    usermod -u ${UID} caddy && \
+    groupmod -g ${GID} caddy && \
     mkdir /var/www-upload && \
     chmod 777 /var/www-upload && \
     mkdir -p /tmp/tmp && \
@@ -103,13 +105,14 @@ ENV ENABLE_CRON=1 \
     ENABLE_CADDY=1 \
     ENABLE_FPM=1 \
     ENABLE_LOGS=1 \
+    ENABLE_XDEBUG=0 \
     STARTUP_MIGRATE=1 \
     STARTUP_CONFIG_CACHE=1 \
     STARTUP_ROUTE_CACHE=1 \
     STARTUP_OPTIMIZE=0 \
+    PHP_MAX_CHILDREN=2 \
     DEVELOPMENT_WEBSERVER=0 \
     DEVELOPMENT_WEBSERVER_NO_SSL=0 \
-    ENABLE_XDEBUG=0 \
     XDEBUG_IDE_KEY=PHPSTORM \
     XDEBUG_REMOTE_HOST=docker.for.mac.localhost \
     PHP_SERVER_NAME=docker
